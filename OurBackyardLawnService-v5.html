@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Backyard Lawn Service | Independence's Trusted Lawn & Tree Service</title>
+<meta name="description" content="Our Backyard Lawn Service provides professional lawn care, tree trimming, and landscaping services in Independence, MO. Licensed & insured. Free estimates.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#050505;--bg2:#0a0a0a;--bg3:#111;--card:#111;--card-border:#1a1a1a;
+  --gold:#C8952E;--gold-light:#E8B84B;--gold-dim:#8B6914;--gold-glow:rgba(200,149,46,.15);
+  --text:#F0EAE0;--text-dim:rgba(240,234,224,.5);--text-muted:rgba(240,234,224,.3);
+  --green:#3a7d44;--green-dim:rgba(58,125,68,.2);
+  --font-h:'Bebas Neue',sans-serif;--font-b:'Syne',sans-serif;--font-a:'Cormorant Garamond',serif;
+  --ease:cubic-bezier(.25,.46,.45,.94);--ease-out:cubic-bezier(.16,1,.3,1);--ease-smooth:cubic-bezier(.22,1,.36,1);
+  --max:1200px;--radius:16px;--radius-sm:10px;
+}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{background:var(--bg);color:var(--text);font-family:var(--font-b);line-height:1.7;overflow-x:hidden}
+a{color:var(--gold);text-decoration:none;transition:color .3s}
+a:hover{color:var(--gold-light)}
+img{max-width:100%;display:block}
+
+/* === SCROLL PROGRESS === */
+.progress-bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--gold-dim),var(--gold),var(--gold-light));width:0;z-index:10001;transition:width .1s linear}
+
+/* === NAV === */
+.nav{position:fixed;top:0;left:0;width:100%;z-index:999;padding:20px 0;background:transparent;transition:all .4s var(--ease-smooth)}
+.nav.scrolled{background:rgba(5,5,5,.95);backdrop-filter:blur(20px) saturate(1.4);padding:12px 0;border-bottom:1px solid var(--card-border)}
+.nav-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 24px}
+.nav-logo{font-family:var(--font-h);font-size:1.2rem;letter-spacing:4px;color:var(--text)}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{font-size:.7rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:2.5px;font-weight:600;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--gold);transition:width .4s var(--ease-out)}
+.nav-links a:hover{color:var(--text)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{background:var(--gold);color:var(--bg);padding:10px 24px;font-family:var(--font-h);font-size:.72rem;letter-spacing:3px;border:none;cursor:pointer;border-radius:var(--radius-sm);transition:all .4s var(--ease);text-decoration:none;display:inline-block}
+.nav-cta:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 24px var(--gold-glow);color:var(--bg)}
+.ham{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:1002;background:none;border:none;padding:8px}
+.ham span{width:22px;height:1.5px;background:var(--text);transition:all .3s;display:block}
+.ham.open span:nth-child(1){transform:rotate(45deg) translate(4px,4px)}
+.ham.open span:nth-child(2){opacity:0}
+.ham.open span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px)}
+
+/* === HERO === */
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(5,5,5,.88) 0%,rgba(5,5,5,.65) 50%,rgba(5,5,5,.4) 100%);z-index:1}
+.hero-particles{position:absolute;inset:0;z-index:2;pointer-events:none}
+.hero-content{position:relative;z-index:3;max-width:var(--max);margin:0 auto;padding:160px 24px 100px}
+.hero-eyebrow{font-family:var(--font-a);color:var(--gold);font-size:1.1rem;letter-spacing:3px;margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.hero-eyebrow::before{content:'';width:40px;height:1px;background:var(--gold)}
+.hero h1{font-family:var(--font-h);font-size:clamp(3.5rem,10vw,7rem);line-height:.88;letter-spacing:3px;margin-bottom:24px;max-width:700px}
+.hero h1 .ln{display:block;overflow:hidden}
+.hero h1 .ln span{display:block;transform:translateY(105%);animation:rev 1s var(--ease-smooth) forwards}
+.hero h1 .ln:nth-child(1) span{animation-delay:.3s}
+.hero h1 .ln:nth-child(2) span{animation-delay:.5s;color:var(--gold)}
+.hero h1 .ln:nth-child(3) span{animation-delay:.7s}
+@keyframes rev{to{transform:translateY(0)}}
+.hero-sub{font-family:var(--font-a);font-weight:400;font-size:clamp(1rem,1.5vw,1.2rem);color:var(--text-dim);max-width:500px;line-height:1.9;margin-bottom:36px;opacity:0;animation:fadeUp .8s var(--ease-smooth) 1s forwards}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+.hero-ctas{display:flex;gap:16px;flex-wrap:wrap;opacity:0;animation:fadeUp .8s var(--ease-smooth) 1.2s forwards}
+.btn{background:var(--gold);color:var(--bg);padding:16px 40px;font-family:var(--font-h);font-size:.85rem;letter-spacing:4px;border:none;cursor:pointer;border-radius:var(--radius-sm);transition:all .4s var(--ease-out);position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:8px;text-decoration:none}
+.btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);transition:left .6s}
+.btn:hover::before{left:100%}
+.btn:hover{background:var(--gold-light);transform:translateY(-3px);box-shadow:0 12px 40px var(--gold-glow);color:var(--bg)}
+.btn-outline{border:1.5px solid var(--gold-dim);color:var(--gold);padding:16px 40px;font-family:var(--font-h);font-size:.85rem;letter-spacing:4px;background:transparent;cursor:pointer;border-radius:var(--radius-sm);transition:all .4s var(--ease-out);display:inline-flex;align-items:center;gap:8px;text-decoration:none}
+.btn-outline:hover{border-color:var(--gold);background:rgba(200,149,46,.08);transform:translateY(-3px);color:var(--gold-light)}
+.hero-badge{position:absolute;bottom:40px;right:24px;z-index:3;background:rgba(10,10,10,.85);backdrop-filter:blur(20px);border:1px solid var(--card-border);padding:16px 24px;border-radius:var(--radius);display:flex;align-items:center;gap:14px;opacity:0;animation:fadeUp .8s var(--ease-smooth) 1.6s forwards}
+.hero-badge-stars{color:var(--gold);font-size:1.1rem;letter-spacing:2px}
+.hero-badge-text{font-size:.7rem;letter-spacing:1px;color:var(--text-dim);line-height:1.5}
+.hero-badge-text strong{color:var(--text);display:block;font-family:var(--font-h);font-size:.85rem;letter-spacing:2px}
+
+/* === TRUST STRIP === */
+.trust-strip{padding:24px 24px;background:var(--bg2);border-top:1px solid var(--card-border);border-bottom:1px solid var(--card-border)}
+.trust-inner{max-width:var(--max);margin:0 auto;display:flex;justify-content:center;gap:clamp(24px,4vw,56px);flex-wrap:wrap;align-items:center}
+.trust-item{display:flex;align-items:center;gap:10px;font-family:var(--font-h);font-size:.7rem;letter-spacing:2px;color:var(--text-muted)}
+.trust-item svg{width:18px;height:18px;fill:var(--gold);flex-shrink:0}
+
+/* === SERVICES === */
+.services{padding:100px 24px;position:relative}
+.services-inner{max-width:var(--max);margin:0 auto}
+.section-header{text-align:center;margin-bottom:56px}
+.section-label{font-family:var(--font-a);color:var(--gold);font-size:1rem;letter-spacing:2px;margin-bottom:8px;display:flex;align-items:center;justify-content:center;gap:12px}
+.section-label::before,.section-label::after{content:'';width:32px;height:1px;background:var(--gold-dim)}
+.section-header h2{font-family:var(--font-h);font-size:clamp(2.2rem,5vw,3.4rem);letter-spacing:4px}
+.section-header h2 em{font-style:normal;color:var(--gold)}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.svc-card{background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);overflow:hidden;transition:all .5s var(--ease-out);position:relative}
+.svc-card:hover{border-color:var(--gold-dim);transform:translateY(-6px);box-shadow:0 16px 48px rgba(200,149,46,.08)}
+.svc-icon{width:100%;height:180px;background:var(--bg2);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.svc-icon::after{content:'';position:absolute;bottom:0;left:0;right:0;height:60px;background:linear-gradient(transparent,var(--card))}
+.svc-icon svg{width:48px;height:48px;fill:none;stroke:var(--gold);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;transition:transform .4s var(--ease-out)}
+.svc-card:hover .svc-icon svg{transform:scale(1.1)}
+.svc-body{padding:24px 20px}
+.svc-body h3{font-family:var(--font-h);font-size:1.15rem;letter-spacing:2px;margin-bottom:8px}
+.svc-body p{font-family:var(--font-a);color:var(--text-dim);font-size:.95rem;line-height:1.8}
+
+/* === SOCIAL PROOF === */
+.proof{padding:100px 24px;background:var(--bg2);position:relative}
+.proof-inner{max-width:var(--max);margin:0 auto}
+.proof-top{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-bottom:60px}
+.proof-stats{display:flex;flex-direction:column;gap:24px}
+.proof-rating{display:flex;align-items:baseline;gap:16px}
+.proof-rating .big-num{font-family:var(--font-h);font-size:clamp(5rem,10vw,7rem);color:var(--gold);line-height:1}
+.proof-rating .rating-text{font-size:.85rem;color:var(--text-dim);line-height:1.6}
+.proof-rating .rating-text strong{color:var(--text);display:block;font-family:var(--font-h);font-size:1rem;letter-spacing:1px}
+.proof-stars{display:flex;gap:4px;font-size:1.4rem;color:var(--gold)}
+.proof-badges{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
+.badge{background:rgba(200,149,46,.08);border:1px solid var(--gold-dim);padding:8px 18px;border-radius:20px;font-family:var(--font-b);font-size:.7rem;letter-spacing:1px;color:var(--gold);display:flex;align-items:center;gap:6px}
+.badge svg{width:14px;height:14px;fill:var(--gold)}
+.proof-reviews{display:flex;flex-direction:column;gap:16px}
+.review-card{background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);padding:24px;position:relative}
+.review-card::before{content:'\201C';font-family:var(--font-a);font-size:3rem;color:var(--gold-dim);position:absolute;top:8px;left:20px;line-height:1}
+.review-stars{color:var(--gold);font-size:.9rem;margin-bottom:8px;letter-spacing:2px}
+.review-text{font-family:var(--font-a);font-size:.95rem;color:var(--text-dim);line-height:1.9;padding-left:4px}
+.review-author{margin-top:12px;font-size:.7rem;letter-spacing:1px;color:var(--text-muted);font-weight:600}
+
+/* === BEFORE/AFTER === */
+.gallery{padding:100px 24px;position:relative}
+.gallery-inner{max-width:var(--max);margin:0 auto}
+.gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.gallery-item{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:16/10}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease-smooth)}
+.gallery-item:hover img{transform:scale(1.05)}
+.gallery-label{position:absolute;top:16px;left:16px;background:var(--gold);color:var(--bg);font-family:var(--font-h);font-size:.65rem;letter-spacing:2px;padding:4px 14px;border-radius:20px}
+.gallery-label.after{background:var(--green)}
+
+/* === FORM === */
+.form-section{padding:100px 24px;background:var(--bg2);position:relative;overflow:hidden}
+.form-section::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,var(--gold-glow),transparent 60%);pointer-events:none}
+.form-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:1}
+.form-text h2{font-family:var(--font-h);font-size:clamp(2.2rem,5vw,3.4rem);letter-spacing:3px;line-height:.95;margin-bottom:20px}
+.form-text h2 em{font-style:normal;color:var(--gold);display:block}
+.form-text p{font-family:var(--font-a);color:var(--text-dim);font-size:1.05rem;line-height:1.9;margin-bottom:24px}
+.form-text-points{list-style:none;display:flex;flex-direction:column;gap:10px}
+.form-text-points li{display:flex;align-items:center;gap:10px;font-size:.8rem;color:var(--text-dim);letter-spacing:.5px}
+.form-text-points li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0}
+.form-card{background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);padding:36px 28px}
+.form-card h3{font-family:var(--font-h);font-size:1.3rem;letter-spacing:2px;margin-bottom:20px;text-align:center}
+form{display:flex;flex-direction:column;gap:14px}
+.form-group{display:flex;flex-direction:column;gap:4px}
+.form-group label{font-size:.65rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-muted);font-weight:600}
+.form-group input,.form-group select{background:var(--bg);border:1px solid var(--card-border);color:var(--text);padding:12px 16px;border-radius:var(--radius-sm);font-family:var(--font-b);font-size:.85rem;transition:border-color .3s;outline:none;-webkit-appearance:none}
+.form-group input:focus,.form-group select:focus{border-color:var(--gold)}
+.form-group input::placeholder{color:var(--text-muted)}
+.form-group select{cursor:pointer}
+.form-group select option{background:var(--bg);color:var(--text)}
+.form-submit{background:var(--gold);color:var(--bg);padding:14px;font-family:var(--font-h);font-size:.9rem;letter-spacing:4px;border:none;cursor:pointer;border-radius:var(--radius-sm);transition:all .4s var(--ease);margin-top:4px}
+.form-submit:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 24px var(--gold-glow)}
+
+/* === SERVICE AREA === */
+.area{padding:80px 24px;position:relative}
+.area-inner{max-width:var(--max);margin:0 auto;text-align:center}
+.area h2{font-family:var(--font-h);font-size:clamp(2rem,4vw,3rem);letter-spacing:3px;margin-bottom:16px}
+.area h2 em{font-style:normal;color:var(--gold)}
+.area-sub{font-family:var(--font-a);color:var(--text-dim);font-size:1.05rem;margin-bottom:40px}
+.area-cities{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+.area-city{background:var(--card);border:1px solid var(--card-border);padding:10px 24px;border-radius:24px;font-family:var(--font-h);font-size:.75rem;letter-spacing:2px;color:var(--text-dim);transition:all .3s}
+.area-city:hover{border-color:var(--gold-dim);color:var(--gold)}
+.area-city.primary{border-color:var(--gold);color:var(--gold);background:rgba(200,149,46,.06)}
+
+/* === FOOTER === */
+.footer{padding:60px 24px 24px;background:var(--bg2);border-top:1px solid var(--card-border)}
+.footer-inner{max-width:var(--max);margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.footer-brand h3{font-family:var(--font-h);font-size:1.5rem;letter-spacing:3px;margin-bottom:12px}
+.footer-brand h3 span{color:var(--gold)}
+.footer-brand p{font-family:var(--font-a);color:var(--text-dim);font-size:.95rem;line-height:1.8;max-width:300px}
+.footer-col h4{font-family:var(--font-h);font-size:.85rem;letter-spacing:2px;color:var(--gold);margin-bottom:16px}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.footer-col li{font-size:.8rem;color:var(--text-dim)}
+.footer-col li a{color:var(--text-dim);transition:color .3s}
+.footer-col li a:hover{color:var(--gold)}
+.footer-col .social-links{display:flex;gap:12px;margin-top:8px}
+.footer-col .social-links a{width:36px;height:36px;border:1px solid var(--card-border);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .3s}
+.footer-col .social-links a:hover{border-color:var(--gold);background:rgba(200,149,46,.08)}
+.footer-col .social-links a svg{width:16px;height:16px;fill:var(--text-dim);transition:fill .3s}
+.footer-col .social-links a:hover svg{fill:var(--gold)}
+.footer-bottom{border-top:1px solid var(--card-border);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-bottom p{font-size:.7rem;color:var(--text-muted);letter-spacing:.5px}
+.footer-bottom a{color:var(--gold-dim);font-size:.65rem;letter-spacing:1px}
+
+/* === ANIMATIONS === */
+.anim{opacity:0;transform:translateY(40px);transition:all .8s var(--ease-smooth)}
+.anim-l{opacity:0;transform:translateX(-40px);transition:all .9s var(--ease-smooth)}
+.anim-r{opacity:0;transform:translateX(40px);transition:all .9s var(--ease-smooth)}
+.anim.vis,.anim-l.vis,.anim-r.vis{opacity:1;transform:none}
+.anim-d1{transition-delay:.1s}.anim-d2{transition-delay:.2s}.anim-d3{transition-delay:.3s}
+.anim-d4{transition-delay:.4s}.anim-d5{transition-delay:.5s}.anim-d6{transition-delay:.6s}
+
+/* === RESPONSIVE === */
+@media(max-width:1024px){
+  .svc-grid{grid-template-columns:repeat(2,1fr)}
+  .proof-top{grid-template-columns:1fr}
+  .form-inner{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .nav-links{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(5,5,5,.97);backdrop-filter:blur(20px);flex-direction:column;align-items:center;justify-content:center;gap:28px;z-index:1001}
+  .nav-links.open{display:flex}
+  .nav-links a{font-size:1rem;letter-spacing:4px}
+  .ham{display:flex}
+  .svc-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr}
+  .hero h1{font-size:clamp(2.8rem,8vw,4.5rem)}
+  .hero-badge{position:relative;bottom:auto;right:auto;margin-top:32px;align-self:flex-start}
+  .footer-grid{grid-template-columns:1fr}
+  .area-cities{gap:8px}
+  .proof-rating .big-num{font-size:4rem}
+}
+@media(max-width:480px){
+  .hero-ctas{flex-direction:column}
+  .btn,.btn-outline{width:100%;justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<!-- Scroll Progress -->
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- Nav -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Our Backyard <span>Lawn</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="#services">Services</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+      <a href="tel:+18165070462" class="nav-cta">CALL NOW</a>
+    </div>
+    <button class="ham" id="ham" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="home">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1592417817098-8fd3d9eb14a5?w=1600&q=80" alt="Beautiful lawn in Independence" loading="eager" width="1600" height="900">
+  </div>
+  <div class="hero-overlay"></div>
+  <canvas class="hero-particles" id="particles"></canvas>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Independence's Trusted Choice</div>
+    <h1>
+      <div class="ln"><span>Independence'S</span></div>
+      <div class="ln"><span>TRUSTED</span></div>
+      <div class="ln"><span>LAWN & TREE SERVICE</span></div>
+    </h1>
+    <p class="hero-sub">Professional lawn care, tree trimming, and landscaping services. Licensed, insured, and trusted by Independence homeowners for over 15 years.</p>
+    <div class="hero-ctas">
+      <a href="tel:+18165070462" class="btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        CALL (816) 507-0462
+      </a>
+      <a href="#contact" class="btn-outline">FREE ESTIMATE</a>
+    </div>
+  </div>
+  <div class="hero-badge">
+    <div class="hero-badge-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+    <div class="hero-badge-text">
+      <strong>4.8 STAR RATING</strong>
+      47 Google Reviews
+    </div>
+  </div>
+</section>
+
+<!-- Trust Strip -->
+<div class="trust-strip">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      LICENSED & INSURED
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      15+ YEARS EXPERIENCE
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+      100% SATISFACTION GUARANTEE
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+      LOCAL & FAMILY OWNED
+    </div>
+  </div>
+</div>
+
+<!-- Services -->
+<section class="services" id="services">
+  <div class="services-inner">
+    <div class="section-header anim">
+      <div class="section-label">What We Do</div>
+      <h2>PROFESSIONAL <em>LAWN & TREE</em> SERVICES</h2>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card anim anim-d1">
+        <div class="svc-icon">
+          <svg viewBox="0 0 48 48"><rect x="8" y="30" width="32" height="4" rx="2"/><path d="M14 30V18c0-1 .5-2 1.5-2h17c1 0 1.5 1 1.5 2v12"/><circle cx="24" cy="38" r="3"/><line x1="12" y1="42" x2="36" y2="42"/><path d="M20 16V8M28 16V10"/></svg>
+        </div>
+        <div class="svc-body">
+          <h3>WEEKLY MOWING</h3>
+          <p>Consistent cuts at the right height for a thick, healthy lawn all season long. Edging and blowing included.</p>
+        </div>
+      </div>
+      <div class="svc-card anim anim-d2">
+        <div class="svc-icon">
+          <svg viewBox="0 0 48 48"><path d="M24 4v8M24 36v8M8 24H4M44 24h-4M10 10l4 4M34 34l4 4M10 38l4-4M34 14l4-4"/><circle cx="24" cy="24" r="8"/><path d="M20 20c0-4 8-4 8 0s-8 4-8 0"/></svg>
+        </div>
+        <div class="svc-body">
+          <h3>TREE TRIMMING</h3>
+          <p>Expert pruning and shaping to keep your trees healthy, safe, and looking their best year-round.</p>
+        </div>
+      </div>
+      <div class="svc-card anim anim-d3">
+        <div class="svc-icon">
+          <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="10"/><path d="M24 14V4M24 44v-10M14 24H4M44 24H34"/><path d="M18 18L12 12M36 36l-6-6M18 30l-6 6M36 12l-6 6"/></svg>
+        </div>
+        <div class="svc-body">
+          <h3>STUMP GRINDING</h3>
+          <p>Complete stump removal below grade. No eyesore, no tripping hazard. Reclaim your full yard.</p>
+        </div>
+      </div>
+      <div class="svc-card anim anim-d4">
+        <div class="svc-icon">
+          <svg viewBox="0 0 48 48"><path d="M12 40c-2-6 0-12 4-16s10-6 14-4c-2-6-8-10-14-8S6 20 8 26s4 10 4 14z"/><path d="M28 20c4 2 6 8 4 14s-6 10-6 10"/><path d="M20 32c-2-4 0-8 4-10"/></svg>
+        </div>
+        <div class="svc-body">
+          <h3>LEAF REMOVAL</h3>
+          <p>Full-yard leaf cleanup in fall and spring. We haul everything away so you don't have to.</p>
+        </div>
+      </div>
+      <div class="svc-card anim anim-d5">
+        <div class="svc-icon">
+          <svg viewBox="0 0 48 48"><path d="M6 42h36"/><path d="M10 42V28l6-4v18M20 42V22l6-6v26M30 42V18l6-2v26"/><circle cx="38" cy="12" r="3" fill="var(--gold)" stroke="none"/><path d="M38 9V4M35 7l3-3 3 3"/></svg>
+        </div>
+        <div class="svc-body">
+          <h3>LANDSCAPING</h3>
+          <p>Custom landscape design and installation. Flower beds, mulch, retaining walls, and more.</p>
+        </div>
+      </div>
+      <div class="svc-card anim anim-d6">
+        <div class="svc-icon">
+          <svg viewBox="0 0 48 48"><path d="M8 36h32l-4-8H12z"/><path d="M16 28l-2-6h20l-2 6"/><circle cx="24" cy="14" r="6"/><path d="M21 11l3 3 3-3"/><path d="M12 42h24"/></svg>
+        </div>
+        <div class="svc-body">
+          <h3>SNOW REMOVAL</h3>
+          <p>Reliable residential snow plowing and sidewalk clearing. Available 24/7 when winter hits.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Social Proof -->
+<section class="proof" id="reviews">
+  <div class="proof-inner">
+    <div class="section-header anim">
+      <div class="section-label">What Customers Say</div>
+      <h2>TRUSTED BY <em>Independence</em> HOMEOWNERS</h2>
+    </div>
+    <div class="proof-top">
+      <div class="proof-stats anim-l">
+        <div class="proof-rating">
+          <div class="big-num">4.8</div>
+          <div class="rating-text">
+            <div class="proof-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <strong>47 VERIFIED REVIEWS</strong>
+            on Google
+          </div>
+        </div>
+        <div class="proof-badges">
+          <div class="badge">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Licensed & Insured
+          </div>
+          <div class="badge">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            15 Years Experience
+          </div>
+          <div class="badge">
+            <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+            Free Estimates
+          </div>
+        </div>
+      </div>
+      <div class="proof-reviews anim-r">
+        <div class="review-card">
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">Best lawn service in Independence! Michael and his crew are always on time, professional, and my yard has never looked better. Highly recommend.</p>
+          <div class="review-author">— Sarah M., Independence</div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">Called for a tree trimming estimate and they were out the next day. Fair price, clean work, hauled everything away. Will use again for sure.</p>
+          <div class="review-author">— David R., Blue Springs</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Before/After Gallery -->
+<section class="gallery" id="gallery">
+  <div class="gallery-inner">
+    <div class="section-header anim">
+      <div class="section-label">Our Work</div>
+      <h2>BEFORE & <em>AFTER</em></h2>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item anim anim-d1">
+        <img src="https://images.unsplash.com/photo-1558635924-b60e7d4a2015?w=800&q=75" alt="Before - overgrown lawn" loading="lazy" width="800" height="500">
+        <div class="gallery-label">BEFORE</div>
+      </div>
+      <div class="gallery-item anim anim-d2">
+        <img src="https://images.unsplash.com/photo-1592417817098-8fd3d9eb14a5?w=800&q=75" alt="After - manicured lawn" loading="lazy" width="800" height="500">
+        <div class="gallery-label after">AFTER</div>
+      </div>
+      <div class="gallery-item anim anim-d3">
+        <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&q=75" alt="Before - bare landscape" loading="lazy" width="800" height="500">
+        <div class="gallery-label">BEFORE</div>
+      </div>
+      <div class="gallery-item anim anim-d4">
+        <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=800&q=75" alt="After - landscaped yard" loading="lazy" width="800" height="500">
+        <div class="gallery-label after">AFTER</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Form -->
+<section class="form-section" id="contact">
+  <div class="form-inner">
+    <div class="form-text anim-l">
+      <h2>GET YOUR<em>FREE ESTIMATE</em></h2>
+      <p>Tell us about your property and we'll put together a custom quote. No obligation, no pressure.</p>
+      <ul class="form-text-points">
+        <li>Free on-site estimate within 48 hours</li>
+        <li>No hidden fees or surprise charges</li>
+        <li>Flexible weekly & bi-weekly schedules</li>
+        <li>Senior & military discounts available</li>
+      </ul>
+    </div>
+    <div class="form-card anim-r">
+      <h3>REQUEST A QUOTE</h3>
+      <form action="https://formspree.io/f/xpwzgkqd" method="POST">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" placeholder="John Smith" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="(816) 555-0123" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="john@email.com">
+        </div>
+        <div class="form-group">
+          <label for="service">Service Needed</label>
+          <select id="service" name="service" required>
+            <option value="" disabled selected>Select a service</option>
+            <option value="mowing">Weekly Mowing</option>
+            <option value="tree-trimming">Tree Trimming</option>
+            <option value="stump-grinding">Stump Grinding</option>
+            <option value="leaf-removal">Leaf Removal</option>
+            <option value="landscaping">Landscaping</option>
+            <option value="snow-removal">Snow Removal</option>
+            <option value="other">Other / Multiple</option>
+          </select>
+        </div>
+        <input type="hidden" name="_subject" value="New estimate request from Our Backyard Lawn Service website">
+        <button type="submit" class="form-submit">GET MY FREE ESTIMATE</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Service Area -->
+<section class="area">
+  <div class="area-inner anim">
+    <h2>PROUDLY SERVING <em>Independence</em> & BEYOND</h2>
+    <p class="area-sub">Professional lawn and tree services across the Kansas City metro area.</p>
+    <div class="area-cities">
+      <span class="area-city primary">Independence</span>
+      <span class="area-city">Blue Springs</span>
+      <span class="area-city">Lee's Summit</span>
+      <span class="area-city">Kansas City</span>
+      <span class="area-city">Grain Valley</span>
+      <span class="area-city">Raytown</span>
+      <span class="area-city">Liberty</span>
+      <span class="area-city">Belton</span>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>Our Backyard <span>Lawn</span></h3>
+        <p>Independence's trusted lawn and tree service. Licensed, insured, and committed to making your property look its best.</p>
+      </div>
+      <div class="footer-col">
+        <h4>CONTACT</h4>
+        <ul>
+          <li><a href="tel:+18165070462">(816) 507-0462</a></li>
+          <li><a href="mailto:info@ourbackyardlawn.com">info@ourbackyardlawn.com</a></li>
+          <li>Independence, MO</li>
+          <li>Independence, MO</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>HOURS</h4>
+        <ul>
+          <li>Mon - Fri: 7am - 7pm</li>
+          <li>Saturday: 8am - 5pm</li>
+          <li>Sunday: Closed</li>
+          <li style="color:var(--gold);margin-top:4px">24/7 Snow Removal</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>FOLLOW US</h4>
+        <ul>
+          <li><a href="https://facebook.com/ourbackyardlawnservice">Facebook</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Google Business</a></li>
+        </ul>
+        <div class="social-links">
+          <a href="https://facebook.com/ourbackyardlawnservice" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Our Backyard Lawn Service. All rights reserved.</p>
+      <a href="https://herrmanonlineoutlook.com" target="_blank">BUILT BY HOO</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* === Scroll Progress === */
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement.scrollHeight-window.innerHeight;
+  const p=(window.scrollY/h)*100;
+  document.getElementById('progressBar').style.width=p+'%';
+});
+
+/* === Nav Scroll === */
+const nav=document.getElementById('nav');
+let lastY=0;
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('scrolled',window.scrollY>80);
+  lastY=window.scrollY;
+},{passive:true});
+
+/* === Mobile Menu === */
+const ham=document.getElementById('ham');
+const navLinks=document.getElementById('navLinks');
+ham.addEventListener('click',()=>{
+  ham.classList.toggle('open');
+  navLinks.classList.toggle('open');
+});
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+  ham.classList.remove('open');
+  navLinks.classList.remove('open');
+}));
+
+/* === Gold Particles === */
+(function(){
+  const c=document.getElementById('particles');
+  if(!c)return;
+  const ctx=c.getContext('2d');
+  let w,h,particles=[];
+  function resize(){w=c.width=c.offsetWidth;h=c.height=c.offsetHeight}
+  resize();
+  window.addEventListener('resize',resize);
+  for(let i=0;i<40;i++){
+    particles.push({
+      x:Math.random()*w,y:Math.random()*h,
+      r:Math.random()*2+.5,
+      dx:(Math.random()-.5)*.3,
+      dy:-(Math.random()*.3+.1),
+      a:Math.random()*.4+.1
+    });
+  }
+  function draw(){
+    ctx.clearRect(0,0,w,h);
+    for(const p of particles){
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle='rgba(200,149,46,'+p.a+')';
+      ctx.fill();
+      p.x+=p.dx;p.y+=p.dy;
+      if(p.y<-10){p.y=h+10;p.x=Math.random()*w}
+      if(p.x<-10||p.x>w+10){p.x=Math.random()*w}
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* === Intersection Observer Animations === */
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}});
+},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.anim,.anim-l,.anim-r').forEach(el=>io.observe(el));
+
+/* === Smooth scroll for anchor links === */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'})}
+  });
+});
+</script>
+</body>
+</html>
